@@ -1,0 +1,745 @@
+DEPTH = 32768;                -- The size of memory in words
+WIDTH = 16;                   -- The size of data in bits
+ADDRESS_RADIX = HEX;          -- The radix for address values
+DATA_RADIX = HEX;             -- The radix for data values
+CONTENT                       -- start of (address : data pairs)
+
+BEGIN
+
+0000 : 5A05; -- lui   0x000A 0x0005         ----------- MAIN:	li $a1, %MSG1                                
+0001 : AA76; -- ori   0x000A 0x0076        
+0002 : 5B03; -- lui   0x000B 0x0003         ----------- call %WSTR                                         
+0003 : AB20; -- ori   0x000B 0x0020        
+0004 : 5EFF; -- lui   0x000E 0x00FF        
+0005 : AEFE; -- ori   0x000E 0x00FE        
+0006 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0007 : FFC0; -- sw    0x000F 0x000C        
+0008 : 400B; -- jrl   0x000B               
+0009 : 6FC0; -- lw    0x000F 0x000C        
+000A : 5E00; -- lui   0x000E 0x0000        
+000B : AE02; -- ori   0x000E 0x0002        
+000C : 0CEC; -- add   0x000C 0x000E 0x000C 
+000D : 5A04; -- lui   0x000A 0x0004         ----------- li $a1, %PIN1                                      
+000E : AAEE; -- ori   0x000A 0x00EE        
+000F : 5B03; -- lui   0x000B 0x0003         ----------- call %WSTR                                         
+0010 : AB20; -- ori   0x000B 0x0020        
+0011 : 5EFF; -- lui   0x000E 0x00FF        
+0012 : AEFE; -- ori   0x000E 0x00FE        
+0013 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0014 : FFC0; -- sw    0x000F 0x000C        
+0015 : 400B; -- jrl   0x000B               
+0016 : 6FC0; -- lw    0x000F 0x000C        
+0017 : 5E00; -- lui   0x000E 0x0000        
+0018 : AE02; -- ori   0x000E 0x0002        
+0019 : 0CEC; -- add   0x000C 0x000E 0x000C 
+001A : 5B03; -- lui   0x000B 0x0003         ----------- call %RINT                                         
+001B : AB4C; -- ori   0x000B 0x004C        
+001C : 5EFF; -- lui   0x000E 0x00FF        
+001D : AEFE; -- ori   0x000E 0x00FE        
+001E : 0CEC; -- add   0x000C 0x000E 0x000C 
+001F : FFC0; -- sw    0x000F 0x000C        
+0020 : 400B; -- jrl   0x000B               
+0021 : 6FC0; -- lw    0x000F 0x000C        
+0022 : 5E00; -- lui   0x000E 0x0000        
+0023 : AE02; -- ori   0x000E 0x0002        
+0024 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0025 : 5EFF; -- lui   0x000E 0x00FF         ----------- push $rv                                           
+0026 : AEFE; -- ori   0x000E 0x00FE        
+0027 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0028 : FDC0; -- sw    0x000D 0x000C        
+0029 : 5A05; -- lui   0x000A 0x0005         ----------- li $a1, %PIN2                                      
+002A : AA32; -- ori   0x000A 0x0032        
+002B : 5B03; -- lui   0x000B 0x0003         ----------- call %WSTR                                         
+002C : AB20; -- ori   0x000B 0x0020        
+002D : 5EFF; -- lui   0x000E 0x00FF        
+002E : AEFE; -- ori   0x000E 0x00FE        
+002F : 0CEC; -- add   0x000C 0x000E 0x000C 
+0030 : FFC0; -- sw    0x000F 0x000C        
+0031 : 400B; -- jrl   0x000B               
+0032 : 6FC0; -- lw    0x000F 0x000C        
+0033 : 5E00; -- lui   0x000E 0x0000        
+0034 : AE02; -- ori   0x000E 0x0002        
+0035 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0036 : 5B03; -- lui   0x000B 0x0003         ----------- call %RINT                                         
+0037 : AB4C; -- ori   0x000B 0x004C        
+0038 : 5EFF; -- lui   0x000E 0x00FF        
+0039 : AEFE; -- ori   0x000E 0x00FE        
+003A : 0CEC; -- add   0x000C 0x000E 0x000C 
+003B : FFC0; -- sw    0x000F 0x000C        
+003C : 400B; -- jrl   0x000B               
+003D : 6FC0; -- lw    0x000F 0x000C        
+003E : 5E00; -- lui   0x000E 0x0000        
+003F : AE02; -- ori   0x000E 0x0002        
+0040 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0041 : 5EFF; -- lui   0x000E 0x00FF         ----------- push $rv                                           
+0042 : AEFE; -- ori   0x000E 0x00FE        
+0043 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0044 : FDC0; -- sw    0x000D 0x000C        
+0045 : 64C0; -- lw    0x0004 0x000C         ----------- pop $s3                                            
+0046 : 5E00; -- lui   0x000E 0x0000        
+0047 : AE02; -- ori   0x000E 0x0002        
+0048 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0049 : 63C0; -- lw    0x0003 0x000C         ----------- pop $s2                                            
+004A : 5E00; -- lui   0x000E 0x0000        
+004B : AE02; -- ori   0x000E 0x0002        
+004C : 0CEC; -- add   0x000C 0x000E 0x000C 
+004D : 5104; -- lui   0x0001 0x0004         ----------- li $s0, %SECRET                                    
+004E : A1B6; -- ori   0x0001 0x00B6        
+004F : 6910; -- lw    0x0009 0x0001         ----------- MAIN1:	lw $a0, $s0                                 
+0050 : 5B00; -- lui   0x000B 0x0000         ----------- jeq $a0, $0, %MAIN2                                
+0051 : ABDA; -- ori   0x000B 0x00DA        
+0052 : 290B; -- beq   0x0009 0x0000 0x000B 
+0053 : 5E00; -- lui   0x000E 0x0000         ----------- addi $s0, 0x2, $s1                                 
+0054 : AE02; -- ori   0x000E 0x0002        
+0055 : 01E2; -- add   0x0001 0x000E 0x0002 
+0056 : 6A20; -- lw    0x000A 0x0002         ----------- lw $a1, $s1                                        
+0057 : 5B00; -- lui   0x000B 0x0000         ----------- jeq $a1, $0, %MAIN2                                
+0058 : ABDA; -- ori   0x000B 0x00DA        
+0059 : 2A0B; -- beq   0x000A 0x0000 0x000B 
+005A : 5B01; -- lui   0x000B 0x0001         ----------- call %RPENC                                        
+005B : ABFE; -- ori   0x000B 0x00FE        
+005C : 5EFF; -- lui   0x000E 0x00FF        
+005D : AEFE; -- ori   0x000E 0x00FE        
+005E : 0CEC; -- add   0x000C 0x000E 0x000C 
+005F : FFC0; -- sw    0x000F 0x000C        
+0060 : 400B; -- jrl   0x000B               
+0061 : 6FC0; -- lw    0x000F 0x000C        
+0062 : 5E00; -- lui   0x000E 0x0000        
+0063 : AE02; -- ori   0x000E 0x0002        
+0064 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0065 : F910; -- sw    0x0009 0x0001         ----------- sw $a0, $s0                                        
+0066 : FA20; -- sw    0x000A 0x0002         ----------- sw $a1, $s1                                        
+0067 : 5E00; -- lui   0x000E 0x0000         ----------- addi $s0, 0x4, $s0                                 
+0068 : AE04; -- ori   0x000E 0x0004        
+0069 : 01E1; -- add   0x0001 0x000E 0x0001 
+006A : 5B00; -- lui   0x000B 0x0000         ----------- jmp %MAIN1                                         
+006B : AB9E; -- ori   0x000B 0x009E        
+006C : 300B; -- jr    0x000B               
+006D : 5A05; -- lui   0x000A 0x0005         ----------- MAIN2:	li $a1, %MSG2                               
+006E : AA9A; -- ori   0x000A 0x009A        
+006F : 5B03; -- lui   0x000B 0x0003         ----------- call %WSTR                                         
+0070 : AB20; -- ori   0x000B 0x0020        
+0071 : 5EFF; -- lui   0x000E 0x00FF        
+0072 : AEFE; -- ori   0x000E 0x00FE        
+0073 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0074 : FFC0; -- sw    0x000F 0x000C        
+0075 : 400B; -- jrl   0x000B               
+0076 : 6FC0; -- lw    0x000F 0x000C        
+0077 : 5E00; -- lui   0x000E 0x0000        
+0078 : AE02; -- ori   0x000E 0x0002        
+0079 : 0CEC; -- add   0x000C 0x000E 0x000C 
+007A : 5A04; -- lui   0x000A 0x0004         ----------- li $a1, %PIN1                                      
+007B : AAEE; -- ori   0x000A 0x00EE        
+007C : 5B03; -- lui   0x000B 0x0003         ----------- call %WSTR                                         
+007D : AB20; -- ori   0x000B 0x0020        
+007E : 5EFF; -- lui   0x000E 0x00FF        
+007F : AEFE; -- ori   0x000E 0x00FE        
+0080 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0081 : FFC0; -- sw    0x000F 0x000C        
+0082 : 400B; -- jrl   0x000B               
+0083 : 6FC0; -- lw    0x000F 0x000C        
+0084 : 5E00; -- lui   0x000E 0x0000        
+0085 : AE02; -- ori   0x000E 0x0002        
+0086 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0087 : 5B03; -- lui   0x000B 0x0003         ----------- call %RINT                                         
+0088 : AB4C; -- ori   0x000B 0x004C        
+0089 : 5EFF; -- lui   0x000E 0x00FF        
+008A : AEFE; -- ori   0x000E 0x00FE        
+008B : 0CEC; -- add   0x000C 0x000E 0x000C 
+008C : FFC0; -- sw    0x000F 0x000C        
+008D : 400B; -- jrl   0x000B               
+008E : 6FC0; -- lw    0x000F 0x000C        
+008F : 5E00; -- lui   0x000E 0x0000        
+0090 : AE02; -- ori   0x000E 0x0002        
+0091 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0092 : 5EFF; -- lui   0x000E 0x00FF         ----------- push $rv                                           
+0093 : AEFE; -- ori   0x000E 0x00FE        
+0094 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0095 : FDC0; -- sw    0x000D 0x000C        
+0096 : 5A05; -- lui   0x000A 0x0005         ----------- li $a1, %PIN2                                      
+0097 : AA32; -- ori   0x000A 0x0032        
+0098 : 5B03; -- lui   0x000B 0x0003         ----------- call %WSTR                                         
+0099 : AB20; -- ori   0x000B 0x0020        
+009A : 5EFF; -- lui   0x000E 0x00FF        
+009B : AEFE; -- ori   0x000E 0x00FE        
+009C : 0CEC; -- add   0x000C 0x000E 0x000C 
+009D : FFC0; -- sw    0x000F 0x000C        
+009E : 400B; -- jrl   0x000B               
+009F : 6FC0; -- lw    0x000F 0x000C        
+00A0 : 5E00; -- lui   0x000E 0x0000        
+00A1 : AE02; -- ori   0x000E 0x0002        
+00A2 : 0CEC; -- add   0x000C 0x000E 0x000C 
+00A3 : 5B03; -- lui   0x000B 0x0003         ----------- call %RINT                                         
+00A4 : AB4C; -- ori   0x000B 0x004C        
+00A5 : 5EFF; -- lui   0x000E 0x00FF        
+00A6 : AEFE; -- ori   0x000E 0x00FE        
+00A7 : 0CEC; -- add   0x000C 0x000E 0x000C 
+00A8 : FFC0; -- sw    0x000F 0x000C        
+00A9 : 400B; -- jrl   0x000B               
+00AA : 6FC0; -- lw    0x000F 0x000C        
+00AB : 5E00; -- lui   0x000E 0x0000        
+00AC : AE02; -- ori   0x000E 0x0002        
+00AD : 0CEC; -- add   0x000C 0x000E 0x000C 
+00AE : 5EFF; -- lui   0x000E 0x00FF         ----------- push $rv                                           
+00AF : AEFE; -- ori   0x000E 0x00FE        
+00B0 : 0CEC; -- add   0x000C 0x000E 0x000C 
+00B1 : FDC0; -- sw    0x000D 0x000C        
+00B2 : 64C0; -- lw    0x0004 0x000C         ----------- pop $s3                                            
+00B3 : 5E00; -- lui   0x000E 0x0000        
+00B4 : AE02; -- ori   0x000E 0x0002        
+00B5 : 0CEC; -- add   0x000C 0x000E 0x000C 
+00B6 : 63C0; -- lw    0x0003 0x000C         ----------- pop $s2                                            
+00B7 : 5E00; -- lui   0x000E 0x0000        
+00B8 : AE02; -- ori   0x000E 0x0002        
+00B9 : 0CEC; -- add   0x000C 0x000E 0x000C 
+00BA : 5104; -- lui   0x0001 0x0004         ----------- li $s0, %SECRET                                    
+00BB : A1B6; -- ori   0x0001 0x00B6        
+00BC : 6910; -- lw    0x0009 0x0001         ----------- MAIN3:	lw $a0, $s0                                 
+00BD : 5B01; -- lui   0x000B 0x0001         ----------- jeq $a0, $0, %MAIN4                                
+00BE : ABDE; -- ori   0x000B 0x00DE        
+00BF : 290B; -- beq   0x0009 0x0000 0x000B 
+00C0 : 5E00; -- lui   0x000E 0x0000         ----------- addi $s0, 0x2, $s1                                 
+00C1 : AE02; -- ori   0x000E 0x0002        
+00C2 : 01E2; -- add   0x0001 0x000E 0x0002 
+00C3 : 6A20; -- lw    0x000A 0x0002         ----------- lw $a1, $s1                                        
+00C4 : 5B01; -- lui   0x000B 0x0001         ----------- jeq $a1, $0, %MAIN4                                
+00C5 : ABDE; -- ori   0x000B 0x00DE        
+00C6 : 2A0B; -- beq   0x000A 0x0000 0x000B 
+00C7 : 5B02; -- lui   0x000B 0x0002         ----------- call %RPDEC                                        
+00C8 : AB98; -- ori   0x000B 0x0098        
+00C9 : 5EFF; -- lui   0x000E 0x00FF        
+00CA : AEFE; -- ori   0x000E 0x00FE        
+00CB : 0CEC; -- add   0x000C 0x000E 0x000C 
+00CC : FFC0; -- sw    0x000F 0x000C        
+00CD : 400B; -- jrl   0x000B               
+00CE : 6FC0; -- lw    0x000F 0x000C        
+00CF : 5E00; -- lui   0x000E 0x0000        
+00D0 : AE02; -- ori   0x000E 0x0002        
+00D1 : 0CEC; -- add   0x000C 0x000E 0x000C 
+00D2 : 5B02; -- lui   0x000B 0x0002         ----------- call %WCHAR                                        
+00D3 : ABEC; -- ori   0x000B 0x00EC        
+00D4 : 5EFF; -- lui   0x000E 0x00FF        
+00D5 : AEFE; -- ori   0x000E 0x00FE        
+00D6 : 0CEC; -- add   0x000C 0x000E 0x000C 
+00D7 : FFC0; -- sw    0x000F 0x000C        
+00D8 : 400B; -- jrl   0x000B               
+00D9 : 6FC0; -- lw    0x000F 0x000C        
+00DA : 5E00; -- lui   0x000E 0x0000        
+00DB : AE02; -- ori   0x000E 0x0002        
+00DC : 0CEC; -- add   0x000C 0x000E 0x000C 
+00DD : 0A09; -- add   0x000A 0x0000 0x0009  ----------- add $a1, $0, $a0                                   
+00DE : 5B02; -- lui   0x000B 0x0002         ----------- call %WCHAR                                        
+00DF : ABEC; -- ori   0x000B 0x00EC        
+00E0 : 5EFF; -- lui   0x000E 0x00FF        
+00E1 : AEFE; -- ori   0x000E 0x00FE        
+00E2 : 0CEC; -- add   0x000C 0x000E 0x000C 
+00E3 : FFC0; -- sw    0x000F 0x000C        
+00E4 : 400B; -- jrl   0x000B               
+00E5 : 6FC0; -- lw    0x000F 0x000C        
+00E6 : 5E00; -- lui   0x000E 0x0000        
+00E7 : AE02; -- ori   0x000E 0x0002        
+00E8 : 0CEC; -- add   0x000C 0x000E 0x000C 
+00E9 : 5E00; -- lui   0x000E 0x0000         ----------- addi $s0, 0x4, $s0                                 
+00EA : AE04; -- ori   0x000E 0x0004        
+00EB : 01E1; -- add   0x0001 0x000E 0x0001 
+00EC : 5B01; -- lui   0x000B 0x0001         ----------- jmp %MAIN3                                         
+00ED : AB78; -- ori   0x000B 0x0078        
+00EE : 300B; -- jr    0x000B               
+00EF : 5900; -- lui   0x0009 0x0000         ----------- MAIN4:	li $a0, 0xa                                 
+00F0 : A90A; -- ori   0x0009 0x000A        
+00F1 : 5B02; -- lui   0x000B 0x0002         ----------- call %WCHAR                                        
+00F2 : ABEC; -- ori   0x000B 0x00EC        
+00F3 : 5EFF; -- lui   0x000E 0x00FF        
+00F4 : AEFE; -- ori   0x000E 0x00FE        
+00F5 : 0CEC; -- add   0x000C 0x000E 0x000C 
+00F6 : FFC0; -- sw    0x000F 0x000C        
+00F7 : 400B; -- jrl   0x000B               
+00F8 : 6FC0; -- lw    0x000F 0x000C        
+00F9 : 5E00; -- lui   0x000E 0x0000        
+00FA : AE02; -- ori   0x000E 0x0002        
+00FB : 0CEC; -- add   0x000C 0x000E 0x000C 
+00FC : 5B00; -- lui   0x000B 0x0000         ----------- jmp %MAIN2                                         
+00FD : ABDA; -- ori   0x000B 0x00DA        
+00FE : 300B; -- jr    0x000B               
+00FF : 5EFF; -- lui   0x000E 0x00FF         ----------- RPENC:	push $s2                                    
+0100 : AEFE; -- ori   0x000E 0x00FE        
+0101 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0102 : F3C0; -- sw    0x0003 0x000C        
+0103 : 5EFF; -- lui   0x000E 0x00FF         ----------- push $s3                                           
+0104 : AEFE; -- ori   0x000E 0x00FE        
+0105 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0106 : F4C0; -- sw    0x0004 0x000C        
+0107 : 5800; -- lui   0x0008 0x0000         ----------- li $t3, 0x10                                       
+0108 : A810; -- ori   0x0008 0x0010        
+0109 : 5700; -- lui   0x0007 0x0000         ----------- RPENC1:	li $t2, 0x37                               
+010A : A737; -- ori   0x0007 0x0037        
+010B : 0373; -- add   0x0003 0x0007 0x0003  ----------- add $s2, $t2, $s2                                  
+010C : 5EFF; -- lui   0x000E 0x00FF         ----------- sub $s3, $t2, $s3                                  
+010D : AEFE; -- ori   0x000E 0x00FE        
+010E : 0CEC; -- add   0x000C 0x000E 0x000C 
+010F : F7C0; -- sw    0x0007 0x000C        
+0110 : 8707; -- nor   0x0007 0x0000 0x0007 
+0111 : 5E00; -- lui   0x000E 0x0000        
+0112 : AE01; -- ori   0x000E 0x0001        
+0113 : 07E7; -- add   0x0007 0x000E 0x0007 
+0114 : 0474; -- add   0x0004 0x0007 0x0004 
+0115 : 67C0; -- lw    0x0007 0x000C        
+0116 : 5E00; -- lui   0x000E 0x0000        
+0117 : AE02; -- ori   0x000E 0x0002        
+0118 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0119 : D939; -- xor   0x0009 0x0003 0x0009  ----------- xor $a0, $s2, $a0                                  
+011A : 09A9; -- add   0x0009 0x000A 0x0009  ----------- add $a0, $a1, $a0                                  
+011B : 5EFF; -- lui   0x000E 0x00FF         ----------- push $a1                                           
+011C : AEFE; -- ori   0x000E 0x00FE        
+011D : 0CEC; -- add   0x000C 0x000E 0x000C 
+011E : FAC0; -- sw    0x000A 0x000C        
+011F : 8A0A; -- nor   0x000A 0x0000 0x000A  ----------- nor $a1, $0, $a1                                   
+0120 : 5E00; -- lui   0x000E 0x0000         ----------- addi $a1, 0x1, $a1                                 
+0121 : AE01; -- ori   0x000E 0x0001        
+0122 : 0AEA; -- add   0x000A 0x000E 0x000A 
+0123 : 7A99; -- bsr   0x000A 0x0009 0x0009  ----------- bsr $a1, $a0, $a0                                  
+0124 : 6AC0; -- lw    0x000A 0x000C         ----------- pop $a1                                            
+0125 : 5E00; -- lui   0x000E 0x0000        
+0126 : AE02; -- ori   0x000E 0x0002        
+0127 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0128 : 79AA; -- bsr   0x0009 0x000A 0x000A  ----------- bsr $a0, $a1, $a1                                  
+0129 : 5EFF; -- lui   0x000E 0x00FF         ----------- sub $a1, $a0, $a1                                  
+012A : AEFE; -- ori   0x000E 0x00FE        
+012B : 0CEC; -- add   0x000C 0x000E 0x000C 
+012C : F9C0; -- sw    0x0009 0x000C        
+012D : 8909; -- nor   0x0009 0x0000 0x0009 
+012E : 5E00; -- lui   0x000E 0x0000        
+012F : AE01; -- ori   0x000E 0x0001        
+0130 : 09E9; -- add   0x0009 0x000E 0x0009 
+0131 : 0A9A; -- add   0x000A 0x0009 0x000A 
+0132 : 69C0; -- lw    0x0009 0x000C        
+0133 : 5E00; -- lui   0x000E 0x0000        
+0134 : AE02; -- ori   0x000E 0x0002        
+0135 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0136 : DA4A; -- xor   0x000A 0x0004 0x000A  ----------- xor $a1, $s3, $a1                                  
+0137 : 5EFF; -- lui   0x000E 0x00FF         ----------- addi $t3, 0xffff, $t3                              
+0138 : AEFF; -- ori   0x000E 0x00FF        
+0139 : 08E8; -- add   0x0008 0x000E 0x0008 
+013A : 5B02; -- lui   0x000B 0x0002         ----------- jeq $t3, $0, %RPENC2                               
+013B : AB80; -- ori   0x000B 0x0080        
+013C : 280B; -- beq   0x0008 0x0000 0x000B 
+013D : 5B02; -- lui   0x000B 0x0002         ----------- jmp %RPENC1                                        
+013E : AB12; -- ori   0x000B 0x0012        
+013F : 300B; -- jr    0x000B               
+0140 : 0903; -- add   0x0009 0x0000 0x0003  ----------- RPENC2:	add $a0, $0, $s2                           
+0141 : 0A09; -- add   0x000A 0x0000 0x0009  ----------- add $a1, $0, $a0                                   
+0142 : 030A; -- add   0x0003 0x0000 0x000A  ----------- add $s2, $0, $a1                                   
+0143 : 64C0; -- lw    0x0004 0x000C         ----------- pop $s3                                            
+0144 : 5E00; -- lui   0x000E 0x0000        
+0145 : AE02; -- ori   0x000E 0x0002        
+0146 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0147 : 63C0; -- lw    0x0003 0x000C         ----------- pop $s2                                            
+0148 : 5E00; -- lui   0x000E 0x0000        
+0149 : AE02; -- ori   0x000E 0x0002        
+014A : 0CEC; -- add   0x000C 0x000E 0x000C 
+014B : 300F; -- jr    0x000F                ----------- jr $ra                                             
+014C : 5EFF; -- lui   0x000E 0x00FF         ----------- RPDEC:	push $s2                                    
+014D : AEFE; -- ori   0x000E 0x00FE        
+014E : 0CEC; -- add   0x000C 0x000E 0x000C 
+014F : F3C0; -- sw    0x0003 0x000C        
+0150 : 5EFF; -- lui   0x000E 0x00FF         ----------- push $s3                                           
+0151 : AEFE; -- ori   0x000E 0x00FE        
+0152 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0153 : F4C0; -- sw    0x0004 0x000C        
+0154 : 5703; -- lui   0x0007 0x0003         ----------- li $t2, 0x3a7                                      
+0155 : A7A7; -- ori   0x0007 0x00A7        
+0156 : 5EFF; -- lui   0x000E 0x00FF         ----------- push $s3                                           
+0157 : AEFE; -- ori   0x000E 0x00FE        
+0158 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0159 : F4C0; -- sw    0x0004 0x000C        
+015A : 0374; -- add   0x0003 0x0007 0x0004  ----------- add $s2, $t2, $s3                                  
+015B : 68C0; -- lw    0x0008 0x000C         ----------- pop $t3                                            
+015C : 5E00; -- lui   0x000E 0x0000        
+015D : AE02; -- ori   0x000E 0x0002        
+015E : 0CEC; -- add   0x000C 0x000E 0x000C 
+015F : 57FC; -- lui   0x0007 0x00FC         ----------- li $t2, 0xfc59                                     
+0160 : A759; -- ori   0x0007 0x0059        
+0161 : 0873; -- add   0x0008 0x0007 0x0003  ----------- add $t3, $t2, $s2                                  
+0162 : 5B01; -- lui   0x000B 0x0001         ----------- call %RPENC                                        
+0163 : ABFE; -- ori   0x000B 0x00FE        
+0164 : 5EFF; -- lui   0x000E 0x00FF        
+0165 : AEFE; -- ori   0x000E 0x00FE        
+0166 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0167 : FFC0; -- sw    0x000F 0x000C        
+0168 : 400B; -- jrl   0x000B               
+0169 : 6FC0; -- lw    0x000F 0x000C        
+016A : 5E00; -- lui   0x000E 0x0000        
+016B : AE02; -- ori   0x000E 0x0002        
+016C : 0CEC; -- add   0x000C 0x000E 0x000C 
+016D : 64C0; -- lw    0x0004 0x000C         ----------- pop $s3                                            
+016E : 5E00; -- lui   0x000E 0x0000        
+016F : AE02; -- ori   0x000E 0x0002        
+0170 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0171 : 63C0; -- lw    0x0003 0x000C         ----------- pop $s2                                            
+0172 : 5E00; -- lui   0x000E 0x0000        
+0173 : AE02; -- ori   0x000E 0x0002        
+0174 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0175 : 300F; -- jr    0x000F                ----------- jr $ra                                             
+0176 : 55FF; -- lui   0x0005 0x00FF         ----------- WCHAR:	li $t0, 0xff00                              
+0177 : A500; -- ori   0x0005 0x0000        
+0178 : 6650; -- lw    0x0006 0x0005         ----------- lw $t1, $t0                                        
+0179 : 5E00; -- lui   0x000E 0x0000         ----------- andi $t1, 0x2, $t1                                 
+017A : AE02; -- ori   0x000E 0x0002        
+017B : 16E6; -- and   0x0006 0x000E 0x0006 
+017C : 5B02; -- lui   0x000B 0x0002         ----------- jeq $t1, $0, %WCHAR                                
+017D : ABEC; -- ori   0x000B 0x00EC        
+017E : 260B; -- beq   0x0006 0x0000 0x000B 
+017F : 55FF; -- lui   0x0005 0x00FF         ----------- li $t0, 0xff04                                     
+0180 : A504; -- ori   0x0005 0x0004        
+0181 : F950; -- sw    0x0009 0x0005         ----------- sw $a0, $t0                                        
+0182 : 300F; -- jr    0x000F                ----------- jr $ra                                             
+0183 : 55FF; -- lui   0x0005 0x00FF         ----------- RCHAR:	li $t0, 0xff00                              
+0184 : A500; -- ori   0x0005 0x0000        
+0185 : 6650; -- lw    0x0006 0x0005         ----------- lw $t1, $t0                                        
+0186 : 5E00; -- lui   0x000E 0x0000         ----------- andi $t1, 0x1, $t1                                 
+0187 : AE01; -- ori   0x000E 0x0001        
+0188 : 16E6; -- and   0x0006 0x000E 0x0006 
+0189 : 5B03; -- lui   0x000B 0x0003         ----------- jeq $t1, $0, %RCHAR                                
+018A : AB06; -- ori   0x000B 0x0006        
+018B : 260B; -- beq   0x0006 0x0000 0x000B 
+018C : 55FF; -- lui   0x0005 0x00FF         ----------- li $t0, 0xff04                                     
+018D : A504; -- ori   0x0005 0x0004        
+018E : 6D50; -- lw    0x000D 0x0005         ----------- lw $rv, $t0                                        
+018F : 300F; -- jr    0x000F                ----------- jr $ra                                             
+0190 : 69A0; -- lw    0x0009 0x000A         ----------- WSTR:	lw $a0, $a1                                  
+0191 : 5B03; -- lui   0x000B 0x0003         ----------- jeq $a0, $0, %WSTR1                                
+0192 : AB4A; -- ori   0x000B 0x004A        
+0193 : 290B; -- beq   0x0009 0x0000 0x000B 
+0194 : 5B02; -- lui   0x000B 0x0002         ----------- call %WCHAR                                        
+0195 : ABEC; -- ori   0x000B 0x00EC        
+0196 : 5EFF; -- lui   0x000E 0x00FF        
+0197 : AEFE; -- ori   0x000E 0x00FE        
+0198 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0199 : FFC0; -- sw    0x000F 0x000C        
+019A : 400B; -- jrl   0x000B               
+019B : 6FC0; -- lw    0x000F 0x000C        
+019C : 5E00; -- lui   0x000E 0x0000        
+019D : AE02; -- ori   0x000E 0x0002        
+019E : 0CEC; -- add   0x000C 0x000E 0x000C 
+019F : 5E00; -- lui   0x000E 0x0000         ----------- addi $a1, 0x2, $a1                                 
+01A0 : AE02; -- ori   0x000E 0x0002        
+01A1 : 0AEA; -- add   0x000A 0x000E 0x000A 
+01A2 : 5B03; -- lui   0x000B 0x0003         ----------- jmp %WSTR                                          
+01A3 : AB20; -- ori   0x000B 0x0020        
+01A4 : 300B; -- jr    0x000B               
+01A5 : 300F; -- jr    0x000F                ----------- WSTR1:	jr $ra                                      
+01A6 : 5EFF; -- lui   0x000E 0x00FF         ----------- RINT:	push $s0                                     
+01A7 : AEFE; -- ori   0x000E 0x00FE        
+01A8 : 0CEC; -- add   0x000C 0x000E 0x000C 
+01A9 : F1C0; -- sw    0x0001 0x000C        
+01AA : 0001; -- add   0x0000 0x0000 0x0001  ----------- add $0, $0, $s0                                    
+01AB : 5EFF; -- lui   0x000E 0x00FF         ----------- push $0                                            
+01AC : AEFE; -- ori   0x000E 0x00FE        
+01AD : 0CEC; -- add   0x000C 0x000E 0x000C 
+01AE : F0C0; -- sw    0x0000 0x000C        
+01AF : 000D; -- add   0x0000 0x0000 0x000D  ----------- add $0, $0, $rv                                    
+01B0 : 5900; -- lui   0x0009 0x0000         ----------- li $a0, 0x1                                        
+01B1 : A901; -- ori   0x0009 0x0001        
+01B2 : 5B03; -- lui   0x000B 0x0003         ----------- RINT1:	call %RCHAR                                 
+01B3 : AB06; -- ori   0x000B 0x0006        
+01B4 : 5EFF; -- lui   0x000E 0x00FF        
+01B5 : AEFE; -- ori   0x000E 0x00FE        
+01B6 : 0CEC; -- add   0x000C 0x000E 0x000C 
+01B7 : FFC0; -- sw    0x000F 0x000C        
+01B8 : 400B; -- jrl   0x000B               
+01B9 : 6FC0; -- lw    0x000F 0x000C        
+01BA : 5E00; -- lui   0x000E 0x0000        
+01BB : AE02; -- ori   0x000E 0x0002        
+01BC : 0CEC; -- add   0x000C 0x000E 0x000C 
+01BD : 5500; -- lui   0x0005 0x0000         ----------- li $t0, 0xa                                        
+01BE : A50A; -- ori   0x0005 0x000A        
+01BF : 5B03; -- lui   0x000B 0x0003         ----------- jeq $rv, $t0, %RINT2                               
+01C0 : AB92; -- ori   0x000B 0x0092        
+01C1 : 2D5B; -- beq   0x000D 0x0005 0x000B 
+01C2 : 5EFF; -- lui   0x000E 0x00FF         ----------- push $rv                                           
+01C3 : AEFE; -- ori   0x000E 0x00FE        
+01C4 : 0CEC; -- add   0x000C 0x000E 0x000C 
+01C5 : FDC0; -- sw    0x000D 0x000C        
+01C6 : 5B03; -- lui   0x000B 0x0003         ----------- jmp %RINT1                                         
+01C7 : AB64; -- ori   0x000B 0x0064        
+01C8 : 300B; -- jr    0x000B               
+01C9 : 6AC0; -- lw    0x000A 0x000C         ----------- RINT2:	pop $a1                                     
+01CA : 5E00; -- lui   0x000E 0x0000        
+01CB : AE02; -- ori   0x000E 0x0002        
+01CC : 0CEC; -- add   0x000C 0x000E 0x000C 
+01CD : 5B04; -- lui   0x000B 0x0004         ----------- jeq $a1, $0, %RINT4                                
+01CE : AB1E; -- ori   0x000B 0x001E        
+01CF : 2A0B; -- beq   0x000A 0x0000 0x000B 
+01D0 : 5800; -- lui   0x0008 0x0000         ----------- li $t3, 0x2d                                       
+01D1 : A82D; -- ori   0x0008 0x002D        
+01D2 : 5B04; -- lui   0x000B 0x0004         ----------- jeq $a1, $t3, %RINT3                               
+01D3 : AB04; -- ori   0x000B 0x0004        
+01D4 : 2A8B; -- beq   0x000A 0x0008 0x000B 
+01D5 : 5500; -- lui   0x0005 0x0000         ----------- li $t0, 0x30                                       
+01D6 : A530; -- ori   0x0005 0x0030        
+01D7 : 5EFF; -- lui   0x000E 0x00FF         ----------- sub $a1, $t0, $a1                                  
+01D8 : AEFE; -- ori   0x000E 0x00FE        
+01D9 : 0CEC; -- add   0x000C 0x000E 0x000C 
+01DA : F5C0; -- sw    0x0005 0x000C        
+01DB : 8505; -- nor   0x0005 0x0000 0x0005 
+01DC : 5E00; -- lui   0x000E 0x0000        
+01DD : AE01; -- ori   0x000E 0x0001        
+01DE : 05E5; -- add   0x0005 0x000E 0x0005 
+01DF : 0A5A; -- add   0x000A 0x0005 0x000A 
+01E0 : 65C0; -- lw    0x0005 0x000C        
+01E1 : 5E00; -- lui   0x000E 0x0000        
+01E2 : AE02; -- ori   0x000E 0x0002        
+01E3 : 0CEC; -- add   0x000C 0x000E 0x000C 
+01E4 : 5EFF; -- lui   0x000E 0x00FF         ----------- push $a0                                           
+01E5 : AEFE; -- ori   0x000E 0x00FE        
+01E6 : 0CEC; -- add   0x000C 0x000E 0x000C 
+01E7 : F9C0; -- sw    0x0009 0x000C        
+01E8 : 5B04; -- lui   0x000B 0x0004         ----------- call %MULT                                         
+01E9 : AB2A; -- ori   0x000B 0x002A        
+01EA : 5EFF; -- lui   0x000E 0x00FF        
+01EB : AEFE; -- ori   0x000E 0x00FE        
+01EC : 0CEC; -- add   0x000C 0x000E 0x000C 
+01ED : FFC0; -- sw    0x000F 0x000C        
+01EE : 400B; -- jrl   0x000B               
+01EF : 6FC0; -- lw    0x000F 0x000C        
+01F0 : 5E00; -- lui   0x000E 0x0000        
+01F1 : AE02; -- ori   0x000E 0x0002        
+01F2 : 0CEC; -- add   0x000C 0x000E 0x000C 
+01F3 : 69C0; -- lw    0x0009 0x000C         ----------- pop $a0                                            
+01F4 : 5E00; -- lui   0x000E 0x0000        
+01F5 : AE02; -- ori   0x000E 0x0002        
+01F6 : 0CEC; -- add   0x000C 0x000E 0x000C 
+01F7 : 0D11; -- add   0x000D 0x0001 0x0001  ----------- add $rv, $s0, $s0                                  
+01F8 : 5E00; -- lui   0x000E 0x0000         ----------- slli 0x1, $a0, $t0                                 
+01F9 : AE01; -- ori   0x000E 0x0001        
+01FA : BE95; -- sll   0x000E 0x0009 0x0005 
+01FB : 5E00; -- lui   0x000E 0x0000         ----------- slli 0x3, $a0, $a0                                 
+01FC : AE03; -- ori   0x000E 0x0003        
+01FD : BE99; -- sll   0x000E 0x0009 0x0009 
+01FE : 0959; -- add   0x0009 0x0005 0x0009  ----------- add $a0, $t0, $a0                                  
+01FF : 5B03; -- lui   0x000B 0x0003         ----------- jmp %RINT2                                         
+0200 : AB92; -- ori   0x000B 0x0092        
+0201 : 300B; -- jr    0x000B               
+0202 : 810D; -- nor   0x0001 0x0000 0x000D  ----------- RINT3:	nor $s0, $0, $rv                            
+0203 : 5E00; -- lui   0x000E 0x0000         ----------- addi $rv, 0x1, $rv                                 
+0204 : AE01; -- ori   0x000E 0x0001        
+0205 : 0DED; -- add   0x000D 0x000E 0x000D 
+0206 : 61C0; -- lw    0x0001 0x000C         ----------- pop $s0                                            
+0207 : 5E00; -- lui   0x000E 0x0000        
+0208 : AE02; -- ori   0x000E 0x0002        
+0209 : 0CEC; -- add   0x000C 0x000E 0x000C 
+020A : 61C0; -- lw    0x0001 0x000C         ----------- pop $s0                                            
+020B : 5E00; -- lui   0x000E 0x0000        
+020C : AE02; -- ori   0x000E 0x0002        
+020D : 0CEC; -- add   0x000C 0x000E 0x000C 
+020E : 300F; -- jr    0x000F                ----------- jr $ra                                             
+020F : 010D; -- add   0x0001 0x0000 0x000D  ----------- RINT4:	add $s0, $0, $rv                            
+0210 : 61C0; -- lw    0x0001 0x000C         ----------- pop $s0                                            
+0211 : 5E00; -- lui   0x000E 0x0000        
+0212 : AE02; -- ori   0x000E 0x0002        
+0213 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0214 : 300F; -- jr    0x000F                ----------- jr $ra                                             
+0215 : 000D; -- add   0x0000 0x0000 0x000D  ----------- MULT:	add $0, $0, $rv                              
+0216 : 5EFF; -- lui   0x000E 0x00FF         ----------- push $s0                                           
+0217 : AEFE; -- ori   0x000E 0x00FE        
+0218 : 0CEC; -- add   0x000C 0x000E 0x000C 
+0219 : F1C0; -- sw    0x0001 0x000C        
+021A : 5E00; -- lui   0x000E 0x0000         ----------- addi $0, 0x1, $s0                                  
+021B : AE01; -- ori   0x000E 0x0001        
+021C : 00E1; -- add   0x0000 0x000E 0x0001 
+021D : 5880; -- lui   0x0008 0x0080         ----------- li $t3, 0x8000                                     
+021E : A800; -- ori   0x0008 0x0000        
+021F : 1985; -- and   0x0009 0x0008 0x0005  ----------- and $a0, $t3, $t0                                  
+0220 : 5B04; -- lui   0x000B 0x0004         ----------- jeq $t0, $t3, %MULT2                               
+0221 : AB54; -- ori   0x000B 0x0054        
+0222 : 258B; -- beq   0x0005 0x0008 0x000B 
+0223 : 1A86; -- and   0x000A 0x0008 0x0006  ----------- MULT3:	and $a1, $t3, $t1                           
+0224 : 5B04; -- lui   0x000B 0x0004         ----------- jeq $t1, $t3, %MULT4                               
+0225 : AB62; -- ori   0x000B 0x0062        
+0226 : 268B; -- beq   0x0006 0x0008 0x000B 
+0227 : 5B04; -- lui   0x000B 0x0004         ----------- jmp %MULT10                                        
+0228 : AB6A; -- ori   0x000B 0x006A        
+0229 : 300B; -- jr    0x000B               
+022A : 8909; -- nor   0x0009 0x0000 0x0009  ----------- MULT2:	nor $a0, $0, $a0                            
+022B : 5E00; -- lui   0x000E 0x0000         ----------- addi $a0, 0x1, $a0                                 
+022C : AE01; -- ori   0x000E 0x0001        
+022D : 09E9; -- add   0x0009 0x000E 0x0009 
+022E : 5B04; -- lui   0x000B 0x0004         ----------- jmp %MULT3                                         
+022F : AB46; -- ori   0x000B 0x0046        
+0230 : 300B; -- jr    0x000B               
+0231 : 8A0A; -- nor   0x000A 0x0000 0x000A  ----------- MULT4:	nor $a1, $0, $a1                            
+0232 : 5E00; -- lui   0x000E 0x0000         ----------- addi $a1, 0x1, $a1                                 
+0233 : AE01; -- ori   0x000E 0x0001        
+0234 : 0AEA; -- add   0x000A 0x000E 0x000A 
+0235 : 5B04; -- lui   0x000B 0x0004         ----------- MULT10:	jeq $t0, $t1, %MULT5                       
+0236 : AB76; -- ori   0x000B 0x0076        
+0237 : 256B; -- beq   0x0005 0x0006 0x000B 
+0238 : 5B04; -- lui   0x000B 0x0004         ----------- jmp %MULT6                                         
+0239 : AB78; -- ori   0x000B 0x0078        
+023A : 300B; -- jr    0x000B               
+023B : 0001; -- add   0x0000 0x0000 0x0001  ----------- MULT5:	add $0, $0, $s0                             
+023C : 5B04; -- lui   0x000B 0x0004         ----------- MULT6:	jeq $a1, $0, %MULT8                         
+023D : AB9E; -- ori   0x000B 0x009E        
+023E : 2A0B; -- beq   0x000A 0x0000 0x000B 
+023F : 5E00; -- lui   0x000E 0x0000         ----------- andi $a1, 0x1, $t2                                 
+0240 : AE01; -- ori   0x000E 0x0001        
+0241 : 1AE7; -- and   0x000A 0x000E 0x0007 
+0242 : 5B04; -- lui   0x000B 0x0004         ----------- jeq $t2, $0, %MULT7                                
+0243 : AB8C; -- ori   0x000B 0x008C        
+0244 : 270B; -- beq   0x0007 0x0000 0x000B 
+0245 : 0D9D; -- add   0x000D 0x0009 0x000D  ----------- add $rv, $a0, $rv                                  
+0246 : 5E00; -- lui   0x000E 0x0000         ----------- MULT7:	slli 0x1, $a0, $a0                          
+0247 : AE01; -- ori   0x000E 0x0001        
+0248 : BE99; -- sll   0x000E 0x0009 0x0009 
+0249 : 5E00; -- lui   0x000E 0x0000         ----------- srli 0x1, $a1, $a1                                 
+024A : AE01; -- ori   0x000E 0x0001        
+024B : EEAA; -- srl   0x000E 0x000A 0x000A 
+024C : 5B04; -- lui   0x000B 0x0004         ----------- jmp %MULT6                                         
+024D : AB78; -- ori   0x000B 0x0078        
+024E : 300B; -- jr    0x000B               
+024F : 5B04; -- lui   0x000B 0x0004         ----------- MULT8:	jeq $s0, $0, %MULT9                         
+0250 : ABAC; -- ori   0x000B 0x00AC        
+0251 : 210B; -- beq   0x0001 0x0000 0x000B 
+0252 : 8D0D; -- nor   0x000D 0x0000 0x000D  ----------- nor $rv, $0, $rv                                   
+0253 : 5E00; -- lui   0x000E 0x0000         ----------- addi $rv, 0x1, $rv                                 
+0254 : AE01; -- ori   0x000E 0x0001        
+0255 : 0DED; -- add   0x000D 0x000E 0x000D 
+0256 : 61C0; -- lw    0x0001 0x000C         ----------- MULT9:	pop $s0                                     
+0257 : 5E00; -- lui   0x000E 0x0000        
+0258 : AE02; -- ori   0x000E 0x0002        
+0259 : 0CEC; -- add   0x000C 0x000E 0x000C 
+025A : 300F; -- jr    0x000F                ----------- jr $ra                                             
+025B : 0054; -- "T"
+025C : 0048; -- "H"
+025D : 0049; -- "I"
+025E : 0053; -- "S"
+025F : 0020; -- " "
+0260 : 004D; -- "M"
+0261 : 0045; -- "E"
+0262 : 0053; -- "S"
+0263 : 0053; -- "S"
+0264 : 0041; -- "A"
+0265 : 0047; -- "G"
+0266 : 0045; -- "E"
+0267 : 0020; -- " "
+0268 : 0057; -- "W"
+0269 : 0041; -- "A"
+026A : 0053; -- "S"
+026B : 0020; -- " "
+026C : 0045; -- "E"
+026D : 004E; -- "N"
+026E : 0043; -- "C"
+026F : 0052; -- "R"
+0270 : 0059; -- "Y"
+0271 : 0050; -- "P"
+0272 : 0054; -- "T"
+0273 : 0045; -- "E"
+0274 : 0044; -- "D"
+0275 : 000A; -- "\n"
+0276 : 0000; -- "\0"
+0277 : 0045; -- "E"
+0278 : 006E; -- "n"
+0279 : 0074; -- "t"
+027A : 0065; -- "e"
+027B : 0072; -- "r"
+027C : 0020; -- " "
+027D : 0061; -- "a"
+027E : 006E; -- "n"
+027F : 0020; -- " "
+0280 : 0069; -- "i"
+0281 : 006E; -- "n"
+0282 : 0074; -- "t"
+0283 : 0065; -- "e"
+0284 : 0067; -- "g"
+0285 : 0065; -- "e"
+0286 : 0072; -- "r"
+0287 : 0020; -- " "
+0288 : 0061; -- "a"
+0289 : 0073; -- "s"
+028A : 0020; -- " "
+028B : 0074; -- "t"
+028C : 0068; -- "h"
+028D : 0065; -- "e"
+028E : 0020; -- " "
+028F : 0031; -- "1"
+0290 : 0073; -- "s"
+0291 : 0074; -- "t"
+0292 : 0020; -- " "
+0293 : 0070; -- "p"
+0294 : 0069; -- "i"
+0295 : 006E; -- "n"
+0296 : 003A; -- ":"
+0297 : 000A; -- "\n"
+0298 : 0000; -- "\0"
+0299 : 0045; -- "E"
+029A : 006E; -- "n"
+029B : 0074; -- "t"
+029C : 0065; -- "e"
+029D : 0072; -- "r"
+029E : 0020; -- " "
+029F : 0061; -- "a"
+02A0 : 006E; -- "n"
+02A1 : 0020; -- " "
+02A2 : 0069; -- "i"
+02A3 : 006E; -- "n"
+02A4 : 0074; -- "t"
+02A5 : 0065; -- "e"
+02A6 : 0067; -- "g"
+02A7 : 0065; -- "e"
+02A8 : 0072; -- "r"
+02A9 : 0020; -- " "
+02AA : 0061; -- "a"
+02AB : 0073; -- "s"
+02AC : 0020; -- " "
+02AD : 0074; -- "t"
+02AE : 0068; -- "h"
+02AF : 0065; -- "e"
+02B0 : 0020; -- " "
+02B1 : 0032; -- "2"
+02B2 : 006E; -- "n"
+02B3 : 0064; -- "d"
+02B4 : 0020; -- " "
+02B5 : 0070; -- "p"
+02B6 : 0069; -- "i"
+02B7 : 006E; -- "n"
+02B8 : 003A; -- ":"
+02B9 : 000A; -- "\n"
+02BA : 0000; -- "\0"
+02BB : 0045; -- "E"
+02BC : 006E; -- "n"
+02BD : 0063; -- "c"
+02BE : 0072; -- "r"
+02BF : 0079; -- "y"
+02C0 : 0070; -- "p"
+02C1 : 0074; -- "t"
+02C2 : 0069; -- "i"
+02C3 : 006E; -- "n"
+02C4 : 0067; -- "g"
+02C5 : 0020; -- " "
+02C6 : 002E; -- "."
+02C7 : 0020; -- " "
+02C8 : 002E; -- "."
+02C9 : 0020; -- " "
+02CA : 002E; -- "."
+02CB : 000A; -- "\n"
+02CC : 0000; -- "\0"
+02CD : 0044; -- "D"
+02CE : 0065; -- "e"
+02CF : 0063; -- "c"
+02D0 : 0072; -- "r"
+02D1 : 0079; -- "y"
+02D2 : 0070; -- "p"
+02D3 : 0074; -- "t"
+02D4 : 0069; -- "i"
+02D5 : 006E; -- "n"
+02D6 : 0067; -- "g"
+02D7 : 0020; -- " "
+02D8 : 002E; -- "."
+02D9 : 0020; -- " "
+02DA : 002E; -- "."
+02DB : 0020; -- " "
+02DC : 002E; -- "."
+02DD : 000A; -- "\n"
+02DE : 0000; -- "\0"
+
+END;
